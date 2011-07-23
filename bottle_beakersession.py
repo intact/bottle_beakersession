@@ -4,10 +4,11 @@ __license__ = "BSD"
 
 ### CUT HERE (see setup.py)
 
-from beaker.session import Session, SessionObject
+from beaker.session import SessionObject
 from beaker.util import coerce_session_params
 from bottle import request, response
 from inspect import getargspec
+
 
 class BottleBeakerSessionObject(SessionObject):
     def flash(self, message, category='message'):
@@ -18,6 +19,7 @@ class BottleBeakerSessionObject(SessionObject):
             return self.pop('_flashes', [])
         else:
             return [message[1] for message in self.pop('_flashes', [])]
+
 
 class BeakerSessionPlugin(object):
     name = 'beakersession'
