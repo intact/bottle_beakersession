@@ -24,8 +24,8 @@ class BottleBeakerSessionObject(SessionObject):
 class BeakerSessionPlugin(object):
     name = 'beakersession'
 
-    def __init__(self, keyword='session', config={}):
-        self.config = coerce_session_params(config)
+    def __init__(self, keyword='session', config=None):
+        self.config = coerce_session_params(config) if config is not None else {}
         self.keyword = keyword
 
     def apply(self, callback, context):
